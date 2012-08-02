@@ -1,0 +1,5 @@
+*.o
+*.pyc
+*.bak
+wsound
+libwsound.so
