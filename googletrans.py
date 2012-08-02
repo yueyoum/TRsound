@@ -11,7 +11,6 @@ import ctypes
 
 # REPLACE THIS WITH YOUR PATH
 WSOUND = os.path.dirname(os.path.realpath(__file__)) + '/libwsound.so'
-print WSOUND
 
 
 class GoogleTrans(object):

@@ -14,7 +14,7 @@
 
 > * wsound :  ./wsound "MUSIC FILE" 可以播放mp3
 
-> * libwsound.so :  动态链接库, 其中的 <code>void decode(const char \*)</code> 提供给Python调用。
+> * libwsound.so :  动态链接库, 其中的 <code>int decode(const char \*)</code> 提供给Python调用。
 
 > 运行 googletrans.py 后，输入 字符 回车后翻译，输入 s 发音，输入 exit 退出
 
