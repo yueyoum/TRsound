@@ -12,6 +12,8 @@ import ctypes
 # REPLACE THIS WITH YOUR PATH
 WSOUND = os.path.dirname(os.path.realpath(__file__)) + '/libwsound.so'
 
+TIMEOUT = 5
+
 
 class GoogleTrans(object):
     def __init__(self):
@@ -94,14 +96,21 @@ class GoogleTrans(object):
             _param['hl'] = 'en'
             
         url = '%s%s' % (self.URL, urllib.urlencode(_param))
-        response = self.opener.open(url);
+        try:
+            response = self.opener.open(url, timeout=TIMEOUT);
+        except:
+            return None
         return response.read()
         
         
     def trans(self, text):
         self.last_word = text;
+
+        response = self._request(text)
+        if not response:
+            return ['Error']
         
-        _res = self.RES_PATTERN.findall( self._request(text) )
+        _res = self.RES_PATTERN.findall(response)
         _res = _res[:2]
         return [r.replace('[', '').replace(']', '') for r in _res]
 
